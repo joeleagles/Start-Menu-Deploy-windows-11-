@@ -4,10 +4,9 @@
 REM --> Script Made By Joel Eagles
 
 
-REM  --> this will run the script as admin
 
 
-
+REM  --> this will run the script as admin (stole this section from someone online)
 
 :: BatchGotAdmin
 :-------------------------------------
@@ -43,15 +42,24 @@ if '%errorlevel%' NEQ '0' (
 
 
 
+REM --> this sets the current user's start menu to the provided start config
 
 
-REM --> this makes a new directory in the default user and copys the start config to that directory
+del "%LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start.bin" && del "%LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin"
+pushd "%~dp0"
+Xcopy .\start.bin %LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\ /I
+
+
+REM --> this makes a new directory in the default user and copies the start config to that directory (make all future users have the same default start menu)
 
 
 echo Adding Default Start Menu Config...
 
 pushd "%~dp0"
-md C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\
-Xcopy .\start.bin C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\ /I
-echo Finished! press any button to close.
-pause
+Xcopy .\start.bin C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\ /I /X
+@echo off
+echo Finished! You will have to restart to see the change on the current user. 
+echo would you like to restart now? (y/n)
+set /p RESTARTP=
+
+if "%RESTARTP%"=="y" (shutdown.exe /r /t 00) else (EXIT)
