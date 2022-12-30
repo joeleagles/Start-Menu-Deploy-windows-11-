@@ -1,4 +1,4 @@
-this script creates a the start menu directory in the default user, then copies a start menu configuration to that directory. this will set the default start menu for all new users to that config, including domain users.
+this script creates a the start menu directory in the default user, then copies a start menu configuration to that directory. this will set the default start menu for all new users to that config, including domain users. also sets for the current user.
 
 you also don't have to wait until apps are installed to run the script. for example, you can run the script then install chrome, and it will pop up in the start menu after the install is finished.
 
