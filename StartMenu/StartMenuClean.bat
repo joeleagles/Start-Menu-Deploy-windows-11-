@@ -1,10 +1,7 @@
 @echo off
 
-test
+
 REM --> Script Made By Joel Eagles
-
-
-
 
 REM  --> this will run the script as admin (stole this section from someone online)
 
