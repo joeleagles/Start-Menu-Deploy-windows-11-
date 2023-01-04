@@ -60,5 +60,5 @@ echo Finished! You will have to restart to see the change on the current user.
 echo would you like to restart now? (y/n)
 set /p RESTARTP=
 
-if "%RESTARTP%"=="y" (shutdown.exe /r /t 00)
+if "%RESTARTP%"=="y" (shutdown.exe /r /t 00 && EXIT)
 if "%RESTARTP%"=="n" (EXIT) else (GOTO reprompt)
