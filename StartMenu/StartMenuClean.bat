@@ -55,10 +55,5 @@ echo Adding Default Start Menu Config...
 pushd "%~dp0"
 Xcopy .\start.bin C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\ /I /X
 @echo off
-echo Finished! You will have to restart to see the change on the current user. 
-:reprompt
-echo would you like to restart now? (y/n)
-set /p RESTARTP=
-
-if "%RESTARTP%"=="y" (shutdown.exe /r /t 00 && EXIT)
-if "%RESTARTP%"=="n" (EXIT) else (GOTO reprompt)
+taskkill /f /im explorer.exe
+explorer.exe
